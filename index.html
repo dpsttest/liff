@@ -99,7 +99,7 @@
         var teststatus = "";
         if(document.getElementById("teststatusconfirm").check){
           teststatus = document.getElementById("teststatusconfirm").value
-        } else if (document.getElementById("teststatusconfirm").check) {
+        } else if (document.getElementById("teststatusreject").check) {
           teststatus = document.getElementById("teststatusreject").value
         }
         var schooltest = document.getElementById("schooltest").value;
@@ -146,7 +146,7 @@
         await liff.sendMessages([
           {
             "type": "sticker",
-            "stickerId": 2,
+            "stickerId": 3,
             "packageId": 1
           }
         ])
