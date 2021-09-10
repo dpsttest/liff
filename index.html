@@ -36,19 +36,19 @@
     <label for="school">โรงเรียน</label>
     <input id="school" type="text" required class="validate">
   </div>
-  <legend class="col-form-label">สถานะ</legend>
+  <!-- <legend class="col-form-label">สถานะ</legend>
   <div class="form-check">
     <input class="form-check-input" type="radio" name="teststatus" id="teststatusconfirm" value="ยืนยันสิทธิ์" >
-    <label class="form-check-label" for="teststatusconfirm">
+    <label class="form-check-label" for="teststatusconfirm" required class="validate">
       ยืนยันสิทธิ์
     </label>
   </div>
   <div class="form-check">
     <input class="form-check-input" type="radio" name="teststatus" id="teststatusreject" value="สละสิทธิ์">
-    <label class="form-check-label" for="teststatusreject">
+    <label class="form-check-label" for="teststatusreject" class="validate">
       สละสิทธิ์
     </label>
-  </div>
+  </div> -->
 
 
 
@@ -79,12 +79,12 @@
       if (liff.getContext().type !== "none") {
         var fullname = document.getElementById("fullname").value;
         var school = document.getElementById("school").value;
-        var teststatus = $("input[name=teststatus]:checked").val()
+        // var teststatus = $("input[name=teststatus]:checked").val()
 
         await liff.sendMessages([
           {
             "type": "text",
-            "text": "ข้อมูล\nชื่อสกุล:"+ fullname + "\nโรงเรียน:" + school + "\nสถานะการสอบ:" + teststatus
+            "text": "ข้อมูล\nชื่อสกุล:"+ fullname + "\nโรงเรียน:" + school // + "\nสถานะการสอบ:" + teststatus
           }
         ])
       }
