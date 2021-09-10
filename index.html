@@ -49,6 +49,13 @@
       สละสิทธิ์
     </label>
   </div>
+  <legend class="col-form-label">สนามสอบ</legend>
+  <select class="form-select" aria-label="Default select example" id="schooltest" name="schooltest" required>
+    <option value="" disabled hidden>เลือก</option>
+    <option value="โรงเรียนบดิน">โรงเรียนบดิน</option>
+    <option value="โรงเรียนสามเสน">โรงเรียนสามเสน</option>
+    <option value="โรงเรียนแก่นนคร">โรงเรียนแก่นนคร</option>
+  </select>
 
 
 
@@ -85,8 +92,7 @@
         } else {
           teststatus = document.getElementById("teststatusreject").value
         }
-        
-        // var teststatus = $("input[name=teststatus]:checked").val()
+        var schooltest = document.getElementById("schooltest").value;
 
         await liff.sendMessages([
           {
