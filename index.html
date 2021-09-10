@@ -28,6 +28,11 @@
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
   <p><a href="liff/path/?param=9">Link to Path</a></p>
+  <div class="input-field">
+    <label for="fname">ชื่อ</label>
+    <input id="fname" type="text" required class="validate" />
+  </div>
+  <button id="btnMsg" onclick="sendText()">Send Name</button>
 
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
@@ -47,6 +52,18 @@
 
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
+
+    async function sendText() {
+      if (liff.getContext().type !== "none") {
+        var name = document.getElementById("fname").value
+        await liff.sendMessages([
+          {
+            "type": "text",
+            "text": name
+          }
+        ])
+      }
+    }
 
 
 
