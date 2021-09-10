@@ -2,15 +2,18 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>My LIFF app</title>
+  <!-- <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>สำหรับผู้ยืนยันสิทธิ์</title>
   <!-- <link rel="stylesheet" href="css/style.css" media="all"> -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mitr">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-  <!-- Font Awesome CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">  <!-- Font Awesome CSS -->
   <script src="https://kit.fontawesome.com/6a972cf3a7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <style>
+    h1 {
+      text-align: center;
+    }
     body {
       font-family: "Mitr"
     }
@@ -38,7 +41,7 @@
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
   <p><a href="liff/path/?param=9">Link to Path</a></p> -->
-  <div class="input-field">
+  <!-- <div class="input-field">
     <label for="fullname">ชื่อนามสกุล</label>
     <input id="fullname" type="text" required class="validate">
   </div>
@@ -58,22 +61,40 @@
     <label class="form-check-label" for="teststatusreject" class="validate">
       สละสิทธิ์
     </label>
+  </div> -->
+  
+  <div class="container">
+    <!-- <br>
+    <br> -->
+    <div class="mb-3 mt-5">
+      <h1>แบบฟอร์มสำหรับผู้ยืนยันสิทธิ์แล้ว</h1>
+    </div>
+    
+    <form>
+      <div class="mb-3">
+        <label for="schooltest" class="form-label"><h4>สนามสอบ</h4></label>
+        <select class="form-select" aria-label="Default select example" id="schooltest" name="schooltest" required>
+          <option value="" hidden>เลือก</option>
+          <option value="โรงเรียนหนึ่ง">โรงเรียนที่ 1</option>
+          <option value="โรงเรียนสอง">โรงเรียนที่ 2</option>
+          <option value="โรงเรียนสาม">โรงเรียนที่ 3</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label"><h4>อีเมล</h4></label>
+        <input id="email" class="form-control" type="email" placeholder="example@email.com" required class="validate">
+      </div>
+    </form>
+    <button type="submit" class="btn btn-primary" id="btnMsg" onclick="sendText()">ส่งข้อมูล</button>
+    <button type="submit" class="btn btn-primary" id="btnStg" onclick="sendMsg()">ส่งสติกเกอร์</button>
   </div>
-  <legend class="col-form-label">สนามสอบ</legend>
-  <select class="form-select" aria-label="Default select example" id="schooltest" name="schooltest" required>
-    <option value="" disabled hidden>เลือก</option>
-    <option value="โรงเรียนบดิน">โรงเรียนบดิน</option>
-    <option value="โรงเรียนสามเสน">โรงเรียนสามเสน</option>
-    <option value="โรงเรียนแก่นนคร">โรงเรียนแก่นนคร</option>
-  </select>
 
 
 
 
 
-  <button id="btnMsg" onclick="sendText()">Send Name</button>
 
-  <button id="btnMsg" onclick="sendMsg()">Send Message</button>
+  
   <!-- <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
   <button onclick="openWindow()">Open Window</button>
   <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
@@ -94,20 +115,23 @@
 
     async function sendText() {
       if (liff.getContext().type !== "none") {
-        var fullname = document.getElementById("fullname").value;
-        var school = document.getElementById("school").value;
-        var teststatus = "";
-        if(document.getElementById("teststatusconfirm").check){
-          teststatus = document.getElementById("teststatusconfirm").value
-        } else if (document.getElementById("teststatusreject").check) {
-          teststatus = document.getElementById("teststatusreject").value
-        }
+        // var fullname = document.getElementById("fullname").value;
+        // var school = document.getElementById("school").value;
+        // var teststatus = "";
+        // if(document.getElementById("teststatusconfirm").check){
+        //   teststatus = document.getElementById("teststatusconfirm").value
+        // } else if (document.getElementById("teststatusreject").check) {
+        //   teststatus = document.getElementById("teststatusreject").value
+        // }
         var schooltest = document.getElementById("schooltest").value;
-        if(fullname!=""&&school!=""&&teststatus!=""&&schooltest!=""){
+        var email = document.getElementById("email").value;
+        // if(fullname!=""&&school!=""&&teststatus!=""&&schooltest!=""){
+        if(schooltest!=""&&email!=""){
           await liff.sendMessages([
             {
               "type": "text",
-              "text": "ข้อมูล\nชื่อสกุล:"+ fullname + "\nโรงเรียน:" + school + "\nสถานะการสอบ:" + teststatus
+              // "text": "ข้อมูล\nชื่อสกุล:"+ fullname + "\nโรงเรียน:" + school + "\nสถานะการสอบ:" + teststatus
+              "text": "ข้อมูลผู้ยืนยันสิทธิ์\nสถานะการสอบ:" + teststatus + "\nอีเมล:" + email
             }
           ])
           closed()
