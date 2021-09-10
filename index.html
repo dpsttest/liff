@@ -99,18 +99,21 @@
         var teststatus = "";
         if(document.getElementById("teststatusconfirm").check){
           teststatus = document.getElementById("teststatusconfirm").value
-        } else {
+        } else if (document.getElementById("teststatusconfirm").check) {
           teststatus = document.getElementById("teststatusreject").value
         }
         var schooltest = document.getElementById("schooltest").value;
-
-        await liff.sendMessages([
-          {
-            "type": "text",
-            "text": "ข้อมูล\nชื่อสกุล:"+ fullname + "\nโรงเรียน:" + school + "\nสถานะการสอบ:" + teststatus
-          }
-        ])
-        closed()
+        if(fullname!=""&&school!=""&&teststatus!=""&&schooltest!=""){
+          await liff.sendMessages([
+            {
+              "type": "text",
+              "text": "ข้อมูล\nชื่อสกุล:"+ fullname + "\nโรงเรียน:" + school + "\nสถานะการสอบ:" + teststatus
+            }
+          ])
+          closed()
+        } else {
+          alert("กรุณากรอกข้อมูลอีกครั้ง")
+        }
       }
     }
 
@@ -143,8 +146,8 @@
         await liff.sendMessages([
           {
             "type": "sticker",
-            "stickerId": 1,
-            "packageId": 2
+            "stickerId": 2,
+            "packageId": 1
           }
         ])
         closed()
