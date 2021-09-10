@@ -29,61 +29,7 @@
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
   <p><a href="liff/path/?param=9">Link to Path</a></p>
 
-    <div id="forminner">
-      <div class="form-row">
-        <div class="form-group col-md-auto">
-          <label for="id">เลขประจำตัวประชาชน</label>
-          <input type="text area" class="form-control" id="idnumber" name="idnumber" maxlength="13">
-        </div>
-        <div class="form-group col-md-auto">
-          <label for="stdCode">เลขประจำตัวนักเรียน</label>
-          <input type="text area" class="form-control" id="idtest" name="idtest" maxlength="6">
-        </div>
-        <div class="form-group col-md-auto">
-          <label for="firstname">ชื่อ นามสกุล</label>
-          <input type="text area" class="form-control" id="fullname" name="fullname" maxlength="80" placeholder="ชื่อ" required>
-        </div>
-        <div class="form-group col-md-auto">
-          <label for="school">โรงเรียน</label>
-          <input type="text area" class="form-control" id="school" name="school" maxlength="200" placeholder="โรงเรียน" required>
-        </div>
-        <legend class="col-form-label">สถานะ</legend>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="teststatus" id="teststatusconfirm" value="ยืนยันสิทธิ์" >
-          <label class="form-check-label" for="teststatusconfirm">
-            ยืนยันสิทธิ์
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="teststatus" id="teststatusreject" value="สละสิทธิ์">
-          <label class="form-check-label" for="teststatusreject">
-            สละสิทธิ์
-          </label>
-        </div>
-
-        <div>
-          <legend class="col-form-label">สนามสอบ</legend>
-          <select class="form-select" aria-label="Default select example" id="schooltest" name="schooltest" required>
-            <option value="" disabled hidden>เลือก</option>
-            <option value="โรงเรียนบดิน">โรงเรียนบดิน</option>
-            <option value="โรงเรียนสามเสน">โรงเรียนสามเสน</option>
-            <option value="โรงเรียนแก่นนคร">โรงเรียนแก่นนคร</option>
-          </select>
-        </div>
-
-        <br>
-        <div class="row justify-content-center">
-          <div class="input-field col s6 text-center">
-            <button id="UpdateButton" onclick="sendDatas()">
-              บันทึกข้อมูล
-            </button>
-          </div>
-        </div> 
-      </div>
-    </div>
-
-
-  <button id="btnMsg" onclick="sendDatas()">Send Message</button>
+  <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
   <button onclick="openWindow()">Open Window</button>
   <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
@@ -101,29 +47,6 @@
 
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
-    function sendDatas(){
-      var idnumber = document.getElementById("idnumber").value;
-      var idtest = document.getElementById("idtest").value;
-      var fullname = document.getElementById("fullname").value;
-      var school = document.getElementById("school").value;
-      var teststatus = $("input[name=teststatus]:checked").val()
-      var schooltest = document.getElementById("schooltest").value;
-
-      var msg = idnumber + "\n" + idtest + "\n" + fullname + "\n" + school + "\n" + teststatus + "\n" + schooltest
-      sendTestMsg(msg)
-
-    }
-
-    async function sendTestMsg(msg) {
-      if (liff.getContext().type !== "none") {
-        await liff.sendMessages([
-          {
-            type : "text",
-            text : msg
-          }
-        ])
-      }
-    }
 
 
 
@@ -155,6 +78,10 @@
             "type": "sticker",
             "stickerId": 1,
             "packageId": 1
+          },
+          {
+            "type": "text",
+            "text": "สถานะ"
           }
         ])
       }
