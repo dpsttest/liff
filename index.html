@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css" media="all">
 </head>
 <body>
-  <p id="os"><b>OS:</b> </p>
+  <!-- <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
   <p id="version"><b>Version:</b> </p>
   <p id="isInClient"><b>isInClient:</b> </p>
@@ -27,19 +27,41 @@
   <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
-  <p><a href="liff/path/?param=9">Link to Path</a></p>
+  <p><a href="liff/path/?param=9">Link to Path</a></p> -->
   <div class="input-field">
-    <label for="fname">ชื่อ</label>
-    <input id="fname" type="text" required class="validate" />
+    <label for="fullname">ชื่อนามสกุล</label>
+    <input id="fname" type="text" required class="validate">
   </div>
+  <div class="input-field">
+    <label for="school">โรงเรียน</label>
+    <input id="school" type="text" required class="validate">
+  </div>
+  <legend class="col-form-label">สถานะ</legend>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="teststatus" id="teststatusconfirm" value="ยืนยันสิทธิ์" >
+    <label class="form-check-label" for="teststatusconfirm">
+      ยืนยันสิทธิ์
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="teststatus" id="teststatusreject" value="สละสิทธิ์">
+    <label class="form-check-label" for="teststatusreject">
+      สละสิทธิ์
+    </label>
+  </div>
+
+
+
+
+
   <button id="btnMsg" onclick="sendText()">Send Name</button>
 
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
-  <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
+  <!-- <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
   <button onclick="openWindow()">Open Window</button>
   <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
-  <button id="btnClose" onclick="closed()">Close</button>
+  <button id="btnClose" onclick="closed()">Close</button> -->
 
 
 
@@ -55,11 +77,14 @@
 
     async function sendText() {
       if (liff.getContext().type !== "none") {
-        var name = document.getElementById("fname").value
+        var fullname = document.getElementById("fullname").value;
+        var school = document.getElementById("school").value;
+        var teststatus = $("input[name=teststatus]:checked").val()
+
         await liff.sendMessages([
           {
             "type": "text",
-            "text": name
+            "text": "ข้อมูล\nชื่อสกุล:"+ fullname + "\nโรงเรียน:" + school + "\nสถานะการสอบ:" + teststatus
           }
         ])
       }
@@ -95,10 +120,6 @@
             "type": "sticker",
             "stickerId": 1,
             "packageId": 1
-          },
-          {
-            "type": "text",
-            "text": "สถานะ"
           }
         ])
       }
