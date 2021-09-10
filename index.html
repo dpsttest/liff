@@ -29,7 +29,6 @@
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
   <p><a href="liff/path/?param=9">Link to Path</a></p>
 
-  <form class="main" id="form" novalidate="novalidate" style="max-width: 600px;margin: 20px auto;">
     <div id="forminner">
       <div class="form-row">
         <div class="form-group col-md-auto">
@@ -75,14 +74,14 @@
         <br>
         <div class="row justify-content-center">
           <div class="input-field col s6 text-center">
-            <button type="submit" class="btn btn-primary mb-2" id="UpdateButton" onclick="UpdateRow(); return false;">
+            <button id="UpdateButton" onclick="sendDatas()">
               บันทึกข้อมูล
             </button>
           </div>
         </div> 
       </div>
     </div>
-  </form>
+
 
   <button id="btnMsg" onclick="sendDatas()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
@@ -119,8 +118,8 @@
       if (liff.getContext().type !== "none") {
         await liff.sendMessages([
           {
-            "type": "text",
-            "text": msg
+            type : "text",
+            text : msg
           }
         ])
       }
