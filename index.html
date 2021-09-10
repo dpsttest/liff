@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
   <title>My LIFF app</title>
-  <link rel="stylesheet" href="css/style.css" media="all">
+  <!-- <link rel="stylesheet" href="css/style.css" media="all"> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mitr">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <!-- Font Awesome CSS -->
+  <script src="https://kit.fontawesome.com/6a972cf3a7.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <style>
+    body {
+      font-family: "Mitr"
+    }
+    </style>
 </head>
 <body>
   <!-- <p id="os"><b>OS:</b> </p>
@@ -100,7 +110,7 @@
             "text": "ข้อมูล\nชื่อสกุล:"+ fullname + "\nโรงเรียน:" + school + "\nสถานะการสอบ:" + teststatus
           }
         ])
-        close()
+        closed()
       }
     }
 
@@ -134,9 +144,10 @@
           {
             "type": "sticker",
             "stickerId": 1,
-            "packageId": 1
+            "packageId": 2
           }
         ])
+        closed()
       }
     }
 
